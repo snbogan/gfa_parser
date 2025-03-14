@@ -1,6 +1,6 @@
 # gfa_parser
 
-Genome contigs represent one assembly among multiple possible assemblies of shorter contiguous sequences called unitigs. Information about the possible networks of assemblies across unitigs are generally contained in graphical fragment assembly files (GFAs). 
+In a genome, a contig represents one assembly among multiple possible assemblies of shorter contiguous sequences called unitigs. Information about the possible networks of assemblies across unitigs are generally contained in graphical fragment assembly files (GFAs). 
 
 *gfa_parser* is a tool to compute and extract all possible genome assemblies from GFA files using directed, acyclic networks.
 
