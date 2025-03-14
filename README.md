@@ -23,7 +23,7 @@ The script gfa_parser.py reads in four sets of arguments:
 
 2. Two .txt lists of unitigs (utg) phased to each haplotype in a contig of interest
 
-3.. ‘start’ and ‘end’ unitigs flanking the 5’ and 3’ ends of each haplotype
+3. ‘start’ and ‘end’ unitigs flanking the 5’ and 3’ ends of each haplotype
 
 4. A prefix for output FASTA files. 
 
