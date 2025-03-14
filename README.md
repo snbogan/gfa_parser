@@ -4,7 +4,7 @@ In a genome, a contig represents one assembly among multiple possible assemblies
 
 *gfa_parser* is a tool to compute and extract all possible genome assemblies from GFA files using directed, acyclic networks.
 
-## Authors: 
+## Authors 
 Samuel N. Bogan | University of California, Santa Cruz
 
 Owen W. Moosman | University of California, Santa Cruz
