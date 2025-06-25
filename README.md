@@ -25,27 +25,27 @@ Computes and exports all directed acyclic paths through a gfa as fasta files, no
 
 Computes and exports all directed acyclic paths through a gfa as fasta files for haplotypes 1 and 2 in a diploid genome.
 
-## Unphased usage
+## Unphased mode
 
     python unphased_mode.py \
-    --gfa/-g my.gfa \ 			    # GFA file
-    --start/-s start_unitig \ 		# ID of 5’ unitig
-    --end/-e end_unitig \	      	# ID of 3’ unitig
-    --filter_rd/-f 0 \			    # Skip unitigs below this read depth in paths
-    --out/-o output_prefix 		    # Output
+    --gfa/-g my.gfa \ # GFA file
+    --start/-s start_unitig \ # ID of 5’ unitig
+    --end/-e end_unitig \ # ID of 3’ unitig
+    --filter_rd/-f 0 \ # Skip unitigs below this read depth in paths
+    --out/-o output_prefix # Output
     
-## Phased usage
+## Phased mode
 
     python phased_mode.py \
-    --gfa/-g my.gfa \ 			          # GFA file
-    --hap1_start/-h1s start_unitig \ 	  # ID of hap 1 5’ unitig
-    --hap1_end/-h1e end_unitig \	      # ID of hap 1 3’ unitig
-    --hap1_unitigs/-h1u \ 				  # List of hap 1 unitig IDs to consider
-    --hap2_start/-h2s start_unitig \ 	  # ID of hap 1 5’ unitig
-    --hap2_end/-h2e end_unitig \		  # ID of hap 2 3’ unitig
-    --hap2_unitigs/-h2u \ 				  # List of hap 2 unitig IDs to consider
-    --filter_rd/-f 0 \			          # Skip unitigs below this read depth in paths
-    --out/-o output_prefix 		          # Output
+    --gfa/-g my.gfa \ # GFA file
+    --hap1_start/-h1s start_unitig \ # ID of hap 1 5’ unitig
+    --hap1_end/-h1e end_unitig \ # ID of hap 1 3’ unitig
+    --hap1_unitigs/-h1u \ # List of hap 1 unitig IDs to consider
+    --hap2_start/-h2s start_unitig \ # ID of hap 1 5’ unitig
+    --hap2_end/-h2e end_unitig \ # ID of hap 2 3’ unitig
+    --hap2_unitigs/-h2u \ # List of hap 2 unitig IDs to consider
+    --filter_rd/-f 0 \ # Skip unitigs below this read depth in paths
+    --out/-o output_prefix # Output
     
 ## Citation
 
