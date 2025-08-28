@@ -2,7 +2,7 @@
 
 In a genome assembly, a contig represents one assembly among multiple possible assemblies of shorter contiguous sequences called unitigs. Information about the possible networks of assemblies across unitigs are generally contained in graphical fragment assembly files (GFAs). 
 
-*gfa_parser* is a tool to compute and extract all possible genome assemblies from GFA files using directed, acyclic networks.
+*gfa_parser* is a tool to compute and extract all possible genome assemblies from GFA files using directed, acyclic networks. It is compatible with GFAs produced by hifiasm, Verkko, Shasta, and minigraph.
 
 The script gw_paths.py allows users to measure the total number of directed, acyclic paths of unitigs present in whole-genome GFA files (a measure of the total number of contigs that can be extracted from a GFA). It also normalizes this value by the number of unitigs in a GFA, providing a measurement of assembly uncertainty.
 
@@ -34,6 +34,7 @@ Computes and exports all directed acyclic paths through a gfa as fasta files for
     --start/-s start_unitig \ # ID of 5’ unitig
     --end/-e end_unitig \ # ID of 3’ unitig
     --filter_rd/-f 0 \ # Skip unitigs below this read depth in paths
+    --package/-p \ # Enter of "hifiasm", "verkko", "shasta", or "minigraph"
     --out/-o output_prefix # Output
     
 ## Phased mode
@@ -47,8 +48,8 @@ Computes and exports all directed acyclic paths through a gfa as fasta files for
     --hap2_end/-h2e end_unitig \ # ID of hap 2 3’ unitig
     --hap2_unitigs/-h2u \ # List of hap 2 unitig IDs to consider
     --filter_rd/-f 0 \ # Skip unitigs below this read depth in paths
+    --package/-p \ # Enter of "hifiasm", "verkko", "shasta", or "minigraph"
     --out/-o output_prefix # Output
-
 
 ## gw_paths
 
