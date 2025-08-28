@@ -57,5 +57,5 @@ Computes and exports all directed acyclic paths through a gfa as fasta files for
     
 ## Citation
 
-A manuscript reporting *gfa_parser* is in review. For now, please cite this Github page and the listed authors if you use *gfa_parser*.
+A manuscript reporting *gfa_parser* is in revision. For now, please cite this Github page and the listed authors if you use *gfa_parser*.
     
