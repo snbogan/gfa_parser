@@ -144,7 +144,7 @@ if __name__ == "__main__":
     parser.add_argument("--hap2-start", "-h2s", required=True, help="File containing haplotype 2 start unitig")
     parser.add_argument("--hap2-end", "-h2e", required=True, help="File containing haplotype 2 end unitig")
     parser.add_argument("--output-prefix", "-o", required=True, help="Prefix for output FASTA files")
-    parser.add_argument("--filter_rd", "-f", type=int, default=0, help="Minimum rd to keep unitigs (default: 0)")
+    parser.add_argument("--filter_rd", "-r", type=int, default=0, help="Minimum rd to keep unitigs (default: 0)")
     parser.add_argument("--package", "-p", choices=["hifiasm", "verkko", "shasta", "minigraph"], default="hifiasm",
                         help="Which assembly package to run (default: hifiasm)")
 

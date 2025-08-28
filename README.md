@@ -27,13 +27,18 @@ Computes and exports all directed acyclic paths through a gfa as fasta files, no
 
 Computes and exports all directed acyclic paths through a gfa as fasta files for haplotypes 1 and 2 in a diploid genome.
 
+
+### gw_paths
+
+This script counts the total number of all directed, acyclic paths through a GFA file and normalizes this value by the number of unitigs in the GFA. This provides a genome-wide estimate of assembly uncertainty. Paths are enumerated on a log10 scale.
+
 ## Unphased mode
 
     python unphased_mode.py \
     --gfa/-g my.gfa \ # GFA file
     --start/-s start_unitig \ # ID of 5’ unitig
     --end/-e end_unitig \ # ID of 3’ unitig
-    --filter_rd/-f 0 \ # Skip unitigs below this read depth in paths
+    --filter_rd/-r 0 \ # Skip unitigs below this read depth in paths
     --package/-p \ # Enter one of "hifiasm", "verkko", "shasta", or "minigraph"
     --out/-o output_prefix # Output
     
@@ -47,7 +52,7 @@ Computes and exports all directed acyclic paths through a gfa as fasta files for
     --hap2_start/-h2s start_unitig \ # ID of hap 1 5’ unitig
     --hap2_end/-h2e end_unitig \ # ID of hap 2 3’ unitig
     --hap2_unitigs/-h2u \ # List of hap 2 unitig IDs to consider
-    --filter_rd/-f 0 \ # Skip unitigs below this read depth in paths
+    --filter_rd/-r 0 \ # Skip unitigs below this read depth in paths
     --package/-p \ # Enter one of "hifiasm", "verkko", "shasta", or "minigraph"
     --out/-o output_prefix # Output
 
