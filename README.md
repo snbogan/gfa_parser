@@ -50,7 +50,7 @@ Computes and exports all directed acyclic paths through a gfa as fasta files for
     --out/-o output_prefix # Output
 
 
-### gw_paths
+## gw_paths
 
     python gw_paths.py -g my.gfa > output.txt
     
