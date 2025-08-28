@@ -4,6 +4,8 @@ In a genome assembly, a contig represents one assembly among multiple possible a
 
 *gfa_parser* is a tool to compute and extract all possible genome assemblies from GFA files using directed, acyclic networks.
 
+The script gw_paths.py allows users to measure the total number of directed, acyclic paths of unitigs present in whole-genome GFA files (a measure of the total number of contigs that can be extracted from a GFA). It also normalizes this value by the number of unitigs in a GFA, providing a measurement of assembly uncertainty.
+
 ## Authors 
 Samuel N. Bogan | University of California, Santa Cruz
 
@@ -46,6 +48,12 @@ Computes and exports all directed acyclic paths through a gfa as fasta files for
     --hap2_unitigs/-h2u \ # List of hap 2 unitig IDs to consider
     --filter_rd/-f 0 \ # Skip unitigs below this read depth in paths
     --out/-o output_prefix # Output
+
+
+### gw_paths
+
+    python gw_paths.py -g my.gfa > output.txt
+    
     
 ## Citation
 
