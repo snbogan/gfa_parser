@@ -34,7 +34,7 @@ Computes and exports all directed acyclic paths through a gfa as fasta files for
     --start/-s start_unitig \ # ID of 5’ unitig
     --end/-e end_unitig \ # ID of 3’ unitig
     --filter_rd/-f 0 \ # Skip unitigs below this read depth in paths
-    --package/-p \ # Enter of "hifiasm", "verkko", "shasta", or "minigraph"
+    --package/-p \ # Enter one of "hifiasm", "verkko", "shasta", or "minigraph"
     --out/-o output_prefix # Output
     
 ## Phased mode
@@ -48,7 +48,7 @@ Computes and exports all directed acyclic paths through a gfa as fasta files for
     --hap2_end/-h2e end_unitig \ # ID of hap 2 3’ unitig
     --hap2_unitigs/-h2u \ # List of hap 2 unitig IDs to consider
     --filter_rd/-f 0 \ # Skip unitigs below this read depth in paths
-    --package/-p \ # Enter of "hifiasm", "verkko", "shasta", or "minigraph"
+    --package/-p \ # Enter one of "hifiasm", "verkko", "shasta", or "minigraph"
     --out/-o output_prefix # Output
 
 ## gw_paths
