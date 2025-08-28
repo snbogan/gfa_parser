@@ -30,7 +30,7 @@ Computes and exports all directed acyclic paths through a gfa as fasta files for
 
 ### gw_paths
 
-This script counts the total number of all directed, acyclic paths through a GFA file and normalizes this value by the number of unitigs in the GFA. This provides a genome-wide estimate of assembly uncertainty. Paths are enumerated on a log10 scale.
+This script counts the total number of directed, acyclic paths through unitigs in through a GFA file and normalizes this value by the number of unitigs in the GFA. This provides a genome-wide estimate of assembly uncertainty. Paths are enumerated on a log10 scale.
 
 ## Unphased mode
 
