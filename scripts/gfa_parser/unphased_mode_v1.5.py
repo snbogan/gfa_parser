@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+### gfa_parser unphased mode version 1.5 ###
+### Compatible with hifiasm and verkko GFA files ###
+### Written by Samuel N. Bogan [1], Owen W. Moosman [1], and Joanna L. Kelley [1] ###
+### [1] University of California, Santa Cruz, Santa Cruz, USA ###
+
 import argparse
 import sys
 import os
@@ -9,6 +14,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 from Bio import SeqIO
 
+# Parse the GFA file into a directed graph and extract node/edge attributes
 def parse_gfa(gfa_file):
     sequences = {}
     lengths = {}
@@ -40,6 +46,7 @@ def parse_gfa(gfa_file):
 
     return graph, sequences, lengths, depths, edges
 
+# Build sequences account for strand and overlaps
 def get_reverse_complement(seq):
     complement = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C', 'N': 'N'}
     return ''.join([complement.get(base, 'N') for base in reversed(seq)])
@@ -68,6 +75,7 @@ def build_sequence(path, sequences, edges):
 
     return current_seq
 
+# Filter for directed, acyclic paths
 def get_directed_paths(graph, start, end):
     if start not in graph or end not in graph:
         sys.exit(f"Error: Start or end node not found in graph ({start}, {end})")
@@ -89,6 +97,7 @@ def get_directed_paths(graph, start, end):
 
     return sorted(unitig_set), paths
 
+# Write FASTAs
 def write_individual_fastas(paths, sequences, depths, lengths, edges, filter_rd, outdir):
     os.makedirs(outdir, exist_ok=True)
     count = 0
@@ -113,6 +122,7 @@ def write_individual_fastas(paths, sequences, depths, lengths, edges, filter_rd,
     else:
         print(f"Wrote {count} contig FASTA files to '{outdir}'.")
 
+# Define arguments
 def main():
     parser = argparse.ArgumentParser(description="Extract directed paths between two flanking unitigs in a GFA and output individual FASTA files.")
     parser.add_argument('-g', '--gfa', required=True, help='Input GFA file')

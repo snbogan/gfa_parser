@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+### gfa_parser unphased mode version 1.5 ###
+### Compatible with shasta GFA files ###
+### Written by Samuel N. Bogan [1], Owen W. Moosman [1], and Joanna L. Kelley [1] ###
+### [1] University of California, Santa Cruz, Santa Cruz, USA ###
+
 import argparse
 import sys
 import os
@@ -9,7 +14,7 @@ from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 from Bio import SeqIO
 
-
+# Parse GFA cigar string
 def parse_cigar_overlap(cigar):
     """
     Parse a CIGAR string and return total number of matching bases (M operations).
@@ -18,7 +23,7 @@ def parse_cigar_overlap(cigar):
     matches = re.findall(r'(\d+)M', cigar)
     return sum(int(m) for m in matches)
 
-
+# Parse GFA networks
 def parse_gfa(gfa_file, reverse_edges=False):
     sequences = {}
     lengths = {}
@@ -54,7 +59,7 @@ def parse_gfa(gfa_file, reverse_edges=False):
 
     return graph, sequences, lengths, depths, edges
 
-
+# Build sequences, accounting for strand and overlaps
 def get_reverse_complement(seq):
     complement = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C', 'N': 'N'}
     return ''.join([complement.get(base, 'N') for base in reversed(seq)])
@@ -85,7 +90,7 @@ def build_sequence(path, sequences, edges):
 
     return current_seq
 
-
+# Keep directed, acylic paths
 def get_paths_undirected(graph, start, end):
     if start not in graph:
         sys.exit(f"Error: Start node '{start}' not found in graph nodes.")
@@ -109,7 +114,7 @@ def get_paths_undirected(graph, start, end):
 
     return sorted(unitig_set), paths
 
-
+# Write FASTAs
 def write_individual_fastas(paths, sequences, depths, lengths, edges, filter_rd, outdir):
     os.makedirs(outdir, exist_ok=True)
     count = 0
@@ -134,7 +139,7 @@ def write_individual_fastas(paths, sequences, depths, lengths, edges, filter_rd,
     else:
         print(f"Wrote {count} contig FASTA files to '{outdir}'.")
 
-
+# Define arguments
 def main():
     parser = argparse.ArgumentParser(
         description="Extract paths ignoring edge direction between two flanking unitigs in a GFA and output individual FASTA files.")

@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+
+### gfa_parser phased mode version 1.6, compatible with minigraph gfa files ###
+### Written by Samuel N. Bogan [1], Owen W. Moosman [1], and Joanna L. Kelley [1] ###
+### [1] University of California, Santa Cruz, Santa Cruz, USA ###
+
 import argparse
 import sys
 import os
@@ -8,9 +13,11 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio import SeqIO
 
+# Parse GFA cigar strings
 def parse_cigar_overlap(cigar):
     return sum(int(m) for m in re.findall(r'(\d+)M', cigar))
 
+# Parse GFA networks
 def parse_gfa_v3(gfa_file):
     sequences, lengths, depths, graph, edges = {}, {}, {}, nx.DiGraph(), {}
     with open(gfa_file,'r') as f:
@@ -28,6 +35,7 @@ def parse_gfa_v3(gfa_file):
                 graph.add_edge(u1,u2); edges[(u1,u2)] = (s1,s2,ov_len)
     return graph, sequences, lengths, depths, edges
 
+# Build FASTAs of directed, acyclic paths accounting for overlaps and strandedness
 def build_sequence(path,sequences,edges):
     if not path: return ""
     seq=sequences[path[0]]
@@ -39,6 +47,7 @@ def build_sequence(path,sequences,edges):
         seq+=next_seq[ov:]
     return seq
 
+# Export FASTAs
 def write_fastas(paths,sequences,depths,lengths,edges,filter_rd,outdir,hap_label):
     os.makedirs(outdir,exist_ok=True)
     count=0
@@ -52,6 +61,7 @@ def write_fastas(paths,sequences,depths,lengths,edges,filter_rd,outdir,hap_label
         with open(os.path.join(outdir,f"contig_{hap_label}_{count}.fasta"),'w') as handle: SeqIO.write(rec,handle,'fasta')
         count+=1
 
+# Define arguments
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('-g','--gfa',required=True)
