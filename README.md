@@ -63,5 +63,7 @@ This script counts the total number of directed, acyclic paths through unitigs i
     
 ## Citation
 
-A manuscript reporting *gfa_parser* is in revision. For now, please cite this Github page and the listed authors if you use *gfa_parser*.
+A manuscript reporting *gfa_parser* has been accepted at Heredity and is in press. For now, please cite the preprint below when referencing *gfa_parser*:
+
+Moosman OW,  Kelley JL,  and Bogan SN. 2025. [Mitigating assembly and switch errors in phased genomes of polar fishes reveals haplotype diversity in copy number of antifreeze protein genes](https://www.biorxiv.org/content/10.1101/2025.09.09.675170v1). *bioRxiv*. https://doi.org/10.1101/2025.09.09.675170
     
