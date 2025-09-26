@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+### gw_paths.py version 1.0 ###
+### Compatible with hifiasm and verkko GFA files ###
+### Written by Samuel N. Bogan [1], Owen W. Moosman [1], and Joanna L. Kelley [1] ###
+### [1] University of California, Santa Cruz, Santa Cruz, USA ###
+
 import networkx as nx
 import argparse
 from tqdm import tqdm
@@ -7,6 +12,7 @@ from decimal import Decimal, getcontext
 import sys
 import math
 
+# Parse GFA file
 def parse_gfa(gfa_file):
     graph = nx.DiGraph()
     lengths = {}
@@ -27,6 +33,7 @@ def parse_gfa(gfa_file):
 
     return graph, lengths
 
+# Count directed, acylic graphs (DAGs)
 def count_paths_from_node(graph, start_node, memo):
     if start_node in memo:
         return memo[start_node]
@@ -51,6 +58,7 @@ def count_paths_from_node(graph, start_node, memo):
     memo[start_node] = path_counts[start_node]
     return path_counts[start_node]
 
+# Summarize DAGs
 def count_all_dag_paths(graph):
     total_count = 0
     memo = {}
@@ -60,7 +68,9 @@ def count_all_dag_paths(graph):
 
     return total_count
 
-# Expected log10(DAGs) from number of unitigs, using fitted or assumed model
+## Expected log10(DAGs) from number of unitigs, using fitted or assumed model
+# Only interpret or update these values for expected DAGs if you have a predicted threshold
+# for how DAGs should scale with the number of unitigs in a GFA
 def expected_log10_dags(num_unitigs):
     # Example model coefficients; update these with empirical fitting
     a = 0.015
@@ -70,6 +80,7 @@ def expected_log10_dags(num_unitigs):
         return 0
     return a * num_unitigs * math.log(num_unitigs) + b * num_unitigs + c
 
+# Exported variables
 def main():
     parser = argparse.ArgumentParser(description="Efficient count of DAG paths in a GFA using overlaps.")
     parser.add_argument('-g', '--gfa', required=True, help='Input GFA file')
